@@ -9,6 +9,7 @@
   when: 'job.ansible_job_id is defined'
 
 - name: 'tail -n +{{ watch_lines }} {{ watch_file }}'
+  failed_when: false
   shell: 'tail -n +{{ watch_lines }} {{ watch_file }}'
   register: 'watch_tail'
 
