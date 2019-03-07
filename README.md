@@ -23,7 +23,8 @@ None.
 Usage
 -----
 
-```
+```yaml
+
 - name: 'Start a long-running task.'
   shell: 'some-command > /some/log/file'
   async: 3600                             # Max runtime in seconds.
@@ -35,7 +36,7 @@ Usage
     name: 'watch'
   vars:
     watch_file: '/some/log/file'          # Output log file (optional).
-	watch_job: 'longjob'                  # Job name from previous task.
+    watch_job: 'longjob'                  # Job name from previous task.
 
 - name: 'Run another task with the same logfile.'
   shell: 'some-other-command >> /some/log/file'
@@ -49,7 +50,8 @@ Usage
     tasks_from: 'again'
   vars:
     watch_file: '/some/log/file'
-	watch_job: 'anotherjob'
+    watch_job: 'anotherjob'
+
 ```
 
 License
