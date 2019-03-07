@@ -6,7 +6,6 @@ dependencies: []
 
 galaxy_info:
   author: 'Robert August Vincent II'
-  company: 'Valiant Solutions, LLC'
   description: 'Watch the output of long-running tasks.'
   galaxy_tags:
     - 'async'
