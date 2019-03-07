@@ -1,0 +1,48 @@
+---
+
+allow_duplicates: true
+
+dependencies: []
+
+galaxy_info:
+  author: 'Robert August Vincent II'
+  company: 'Valiant Solutions, LLC'
+  description: 'Watch the output of long-running tasks.'
+  galaxy_tags:
+    - 'async'
+  license: 'BSD'
+  min_ansible_version: '2.4'
+  platforms:  # This code is not platform-dependent.
+    - name: 'Amazon'
+      versions:
+        - 'all'
+    - name: 'Debian'
+      versions:
+        - 'all'
+    - name: 'EL'
+      versions:
+        - 'all'
+    - name: 'Fedora'
+      versions:
+        - 'all'
+    - name: 'FreeBSD'
+      versions:
+        - 'all'
+    - name: 'GenericLinux'
+      versions:
+        - 'all'
+    - name: 'GenericUNIX'
+      versions:
+        - 'all'
+    - name: 'MacOSX'
+      versions:
+        - 'all'
+    - name: 'SLES'
+      versions:
+        - 'all'
+    - name: 'Ubuntu'
+      versions:
+        - 'all'
+    - name: 'opensuse'
+      versions:
+        - 'all'
