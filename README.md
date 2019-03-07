@@ -14,6 +14,8 @@ Role Variables
 * `watch_job`: The name of the job to watch.
 * `watch_file`: (optional) The path to a logfile to tail.
 * `watch_lines`: The number of logfile lines to skip.
+* `watch_poll`: Seconds between status checks. (default 1)
+* `watch_timeout`: Maximum seconds to watch a single job. (default 1000)
 
 Dependencies
 ------------
@@ -37,6 +39,7 @@ Usage
   vars:
     watch_file: '/some/log/file'          # Output log file (optional).
     watch_job: 'longjob'                  # Job name from previous task.
+	watch_timeout: 3600                   # Set at least as high as async.
 
 - name: 'Run another task with the same logfile.'
   shell: 'some-other-command >> /some/log/file'
