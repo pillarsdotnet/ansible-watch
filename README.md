@@ -39,7 +39,7 @@ Usage
   vars:
     watch_file: '/some/log/file'          # Output log file (optional).
     watch_job: 'longjob'                  # Job name from previous task.
-`   watch_timeout: 3600                   # Set at least as high as async.
+    watch_timeout: 3600                   # Set at least as high as async.
 
 - name: 'Run another task with the same logfile.'
   shell: 'some-other-command >> /some/log/file'
