@@ -1,0 +1,28 @@
+---
+
+- name: 'tail -n +{{ watch_lines }} {{ watch_file }}'
+  shell: 'tail -n +{{ watch_lines }} {{ watch_file }}'
+  register: 'watch_status'
+
+- block:
+
+    - name: '{{ output_lines }} lines captured.'
+      set_fact:
+        watch_lines: '{{ watch_lines|int + output_lines }}'
+
+    - name: '{{ watch_file }}'
+      debug:
+        var: 'output'
+
+  vars:
+    output: '{{ watch_status.stdout_lines|default([]) }}'
+    output_lines: '{{ output|length }}'
+  when: 'output_lines > 0'
+
+- name: 'Checking {{ watch_job }} status.'
+  async_status:
+    jid: '{{ job.ansible_job_id }}'
+  register: 'watch_status'
+  vars:
+    job: '{{ lookup("vars", watch_job) }}'
+  when: 'job.ansible_job_id is defined'
