@@ -1,8 +1,16 @@
 ---
 
+- name: 'Checking {{ watch_job }} status.'
+  async_status:
+    jid: '{{ job.ansible_job_id }}'
+  register: 'watch_status'
+  vars:
+    job: '{{ lookup("vars", watch_job) }}'
+  when: 'job.ansible_job_id is defined'
+
 - name: 'tail -n +{{ watch_lines }} {{ watch_file }}'
   shell: 'tail -n +{{ watch_lines }} {{ watch_file }}'
-  register: 'watch_status'
+  register: 'watch_tail'
 
 - block:
 
@@ -16,14 +24,6 @@
         var: 'output'
 
   vars:
-    output: '{{ watch_status.stdout_lines|default([]) }}'
+    output: '{{ watch_tail.stdout_lines|default([]) }}'
     output_lines: '{{ output|length|int }}'
   when: 'output_lines > 0'
-
-- name: 'Checking {{ watch_job }} status.'
-  async_status:
-    jid: '{{ job.ansible_job_id }}'
-  register: 'watch_status'
-  vars:
-    job: '{{ lookup("vars", watch_job) }}'
-  when: 'job.ansible_job_id is defined'
